@@ -221,7 +221,7 @@ void AAntiGravityCharacter::Launch (void)
 	if (CanLaunch())
 	{
 		FVector lookDirection = GetControlRotation().RotateVector(FVector::ForwardVector);
-		GetCapsuleComponent()->AddForce(lookDirection * 1000.0f);
+		LaunchCharacter(lookDirection * 1000.0f, false, false);
 	}
 }
 
@@ -236,7 +236,7 @@ void AAntiGravityCharacter::OnHit(AActor* OtherActor, UPrimitiveComponent* Other
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL))
 	{
 		FVector lookDirection = GetControlRotation().RotateVector(FVector::ForwardVector);
-		GetCapsuleComponent()->AddForce(lookDirection * 1000.0f);
+		LaunchCharacter(FVector::ZeroVector, true, true);
 
 		//Destroy();
 	}

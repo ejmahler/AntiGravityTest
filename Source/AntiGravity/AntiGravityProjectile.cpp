@@ -29,7 +29,7 @@ AAntiGravityProjectile::AAntiGravityProjectile(const FObjectInitializer& ObjectI
 	ProjectileMovement->bShouldBounce = true;
 
 	// Die after 3 seconds by default
-	InitialLifeSpan = 55.0f;
+	InitialLifeSpan = 5.0f;
 }
 
 void AAntiGravityProjectile::OnHit(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
@@ -39,6 +39,6 @@ void AAntiGravityProjectile::OnHit(AActor* OtherActor, UPrimitiveComponent* Othe
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
 
-		//Destroy();
+		Destroy();
 	}
 }
